@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="MoovelMaps.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoovelMaps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:esriControls="using:Esri.ArcGISRuntime.Controls"
+    xmlns:esriLayers="using:Esri.ArcGISRuntime.Layers"
+    xmlns:esriSymbology="using:Esri.ArcGISRuntime.Symbology"
+    xmlns:esriData="using:Esri.ArcGISRuntime.Data"
+	xmlns:location="using:Esri.ArcGISRuntime.Location"
+    xmlns:moovel="using:MoovelMaps"
+    Loaded="Page_Loaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <esriControls:MapView x:Name="MapView1" WrapAround="True" Tapped="MapView1_Tapped">
+            
+            <esriControls:MapView.LocationDisplay>
+                <location:LocationDisplay IsEnabled="True" />
+			</esriControls:MapView.LocationDisplay>
+            
+            <esriControls:Map  x:Name="MyMap">
+                <moovel:MoovelMapsLayer ID="MoovelLayer" />
+            </esriControls:Map>
+            
+        </esriControls:MapView>
+
+    </Grid>
+    
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Name="AddBtn"
+                          Click="AddBtn_Click"
+                          Label="Add random Points"
+                          Icon="Add"/>
+            <AppBarToggleButton Name="MapTypeToggleBtn"
+                                Click="MapTypeToggleBtn_Click"
+                                Label="Toggle moovel vs. mapbox"
+                                Icon="Map"/>
+                          
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
